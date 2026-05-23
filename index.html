@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBU - Valyuta Kurslari O'zbekistonda</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="./nbu_logo-Photoroom.png">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+
+<body>
+    <header>
+        <div class="navbar_container">
+            <div class="logo">
+                <a href="./index.html"><img src="./nbu_logo-Photoroom.png" alt="Logo" class="logo_img"></a>
+            </div>
+
+            <div class="nav_links" id="nav_links">
+                <a href="#">Kreditlar</a>
+                <a href="#">Omonatlar</a>
+                <a href="#">Kartalar</a>
+                <a href="#">Pul o'tkazmalari</a>
+                <a href="#">Valyutalar kursi</a>
+                <a href="./login.html" id="auth_link">
+                    <button class="nav-btn-mobile" id="nav-btn-mobile">Kirish</button>
+                </a>
+            </div>
+
+            <div class="right_section">
+                <a href="./login.html" id="auth_link">
+                    <button class="nav-btn" id="nav-btn">Kirish</button>
+                </a>
+                <div class="search-box">
+                    <input type="text" class="search-input" id="searchInput" placeholder="Qidiruv...">
+                    <button class="nav_searchBtn" id="searchBtn">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+                <button id="dark_btn" class="dark_btn"><i class="fa-regular fa-moon"></i></button>
+                <div class="burger" id="burger_icon" onclick="toggleMenu()">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="header_content fade-in">
+            <div class="header_card">
+                <h1 class="header_h1">Valyutalar kurslari va ayirboshlash</h1>
+                <p class="header_p">Valyutani foydali kurs bo'yicha tez va oson ayirboshlang</p>
+            </div>
+            <img src="./image.png" alt="Header Image" class="header_img float-anim">
+        </div>
+    </header>
+
+    <main class="main_content slide-up">
+        <div class="currency-card">
+            <h3>Valyutalar kursi <span>19.05.2026</span></h3>
+            <div class="table-responsive">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="flag-icon"><img class="flags" src="./usa.jpg" alt="USD"></td>
+                            <td>
+                                <span class="code-name">USD</span>
+                                <span class="full-name">AQSH dollari</span>
+                            </td>
+                            <td class="buy-price">11 960</td>
+                            <td class="sell-price">12 070</td>
+                        </tr>
+                        <tr>
+                            <td class="flag-icon"><img class="flags"
+                                    src="./9aec4efe-4046-477c-9b1f-34539f297123_removalai_preview.png" alt="EUR"></td>
+                            <td>
+                                <span class="code-name">EUR</span>
+                                <span class="full-name">EVRO</span>
+                            </td>
+                            <td class="buy-price">13 900</td>
+                            <td class="sell-price">14 100</td>
+                        </tr>
+                        <tr>
+                            <td class="flag-icon"><img class="flags" src="uk.png" alt="GBP"></td>
+                            <td>
+                                <span class="code-name">GBP</span>
+                                <span class="full-name">Angliya funt sterlingi</span>
+                            </td>
+                            <td class="buy-price">15 980</td>
+                            <td class="sell-price">16 630</td>
+                        </tr>
+                        <tr>
+                            <td class="flag-icon"><img class="flags" src="shvet.jpg" alt="CHF"></td>
+                            <td>
+                                <span class="code-name">CHF</span>
+                                <span class="full-name">Shveytsariya franki</span>
+                            </td>
+                            <td class="buy-price">15 070</td>
+                            <td class="sell-price">15 620</td>
+                        </tr>
+                        <tr>
+                            <td class="flag-icon"><img class="flags" src="china.jpg" alt="CNY"></td>
+                            <td>
+                                <span class="code-name">CNY</span>
+                                <span class="full-name">Xitoy yuani</span>
+                            </td>
+                            <td class="buy-price">1 590</td>
+                            <td class="sell-price">1 800</td>
+                        </tr>
+                        <tr>
+                            <td class="flag-icon"><img class="flags" src="japan.jpg" alt="JPY"></td>
+                            <td>
+                                <span class="code-name">JPY</span>
+                                <span class="full-name">Yaponiya iyenasi</span>
+                            </td>
+                            <td class="buy-price">65</td>
+                            <td class="sell-price">80</td>
+                        </tr>
+                        <tr>
+                            <td class="flag-icon"><img class="flags" src="rashnkid.jpg" alt="RUB"></td>
+                            <td>
+                                <span class="code-name">RUB</span>
+                                <span class="full-name">Rossiya rubli</span>
+                            </td>
+                            <td class="buy-price">145</td>
+                            <td class="sell-price">170</td>
+                        </tr>
+                        <tr>
+                            <td class="flag-icon"><img class="flags" src="kz.png" alt="KZT"></td>
+                            <td>
+                                <span class="code-name">KZT</span>
+                                <span class="full-name">Qozog'iston tengesi</span>
+                            </td>
+                            <td class="buy-price">16</td>
+                            <td class="sell-price">27</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="disclaimer">* Kurslar almashinuv vaqtida farq qilishi mumkin. Aniq ayirboshlash kursi operatsiya
+                vaqtida belgilanadi.</p>
+        </div>
+
+        <div class="card converter-card">
+            <h1>Valyuta konvertori</h1>
+            <div class="input-group">
+                <label for="amount">Miqdor:</label>
+                <input type="number" id="amount" placeholder="0">
+            </div>
+            <div class="input-group">
+                <label for="direction">Yo'nalish:</label>
+                <select id="direction">
+                    <option value="usdToUzs">USD ➔ UZS</option>
+                    <option value="uzsToUsd">UZS ➔ USD</option>
+                    <option value="eurToUzs">EUR ➔ UZS</option>
+                    <option value="uzsToEur">UZS ➔ EUR</option>
+                    <option value="gbpToUzs">GBP ➔ UZS</option>
+                    <option value="uzsToGbp">UZS ➔ GBP</option>
+                    <option value="rubToUzs">RUB ➔ UZS</option>
+                    <option value="uzsToRub">UZS ➔ RUB</option>
+                    <option value="kztToUzs">KZT ➔ UZS</option>
+                    <option value="uzsToKzt">UZS ➔ KZT</option>
+                </select>
+            </div>
+            <div class="result-box">
+                <p>Natija</p>
+                <h2 id="result">0</h2>
+            </div>
+        </div>
+    </main>
+
+    <footer class="nbu-footer">
+        <div class="footer-container">
+            <div class="footer-links-grid">
+                <div class="footer-col">
+                    <h4>Jismoniy shaxslarga</h4>
+                    <ul>
+                        <li><a href="#">Kreditlar</a></li>
+                        <li><a href="#">Omonatlar</a></li>
+                        <li><a href="#">Kartalar</a></li>
+                        <li><a href="#">Pul o'tkazmalari</a></li>
+                        <li><a href="#">Valyutalar kursi</a></li>
+                        <li><a href="#">Tariflar</a></li>
+                        <li><a href="#">Aksiyalar</a></li>
+                        <li><a href="#">Milliy mobil ilovasi</a></li>
+                    </ul>
+
+                    <h4 class="mt-4">Korporativ mijozlar</h4>
+                    <ul>
+                        <li><a href="#">Joriy hisob</a></li>
+                        <li><a href="#">Faktoring</a></li>
+                        <li><a href="#">Akkreditiv</a></li>
+                        <li><a href="#">Kartalar</a></li>
+                        <li><a href="#">Ish haqi loyihasi</a></li>
+                        <li><a href="#">Internet banking</a></li>
+                        <li><a href="#">Diling operatsiyalari</a></li>
+                        <li><a href="#">Anderrayting</a></li>
+                    </ul>
+
+                    <h4 class="mt-4">Foydali havolalar</h4>
+                    <ul>
+                        <li><a href="#">Ko'p beriladigan savollar</a></li>
+                        <li><a href="#">Sotuvdagi mol-mulklar</a></li>
+                        <li><a href="#">Auksionlar</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Kichik biznes</h4>
+                    <ul>
+                        <li><a href="#">Joriy hisob raqam</a></li>
+                        <li><a href="#">Kreditlar</a></li>
+                        <li><a href="#">Ekvayring</a></li>
+                        <li><a href="#">Depozitlar</a></li>
+                        <li><a href="#">Kartalar</a></li>
+                        <li><a href="#">Tariflar</a></li>
+                        <li><a href="#">Valyuta operatsiyalari</a></li>
+                        <li><a href="#">Internet-banking</a></li>
+                        <li><a href="#">Cash-pooling</a></li>
+                    </ul>
+
+                    <h4 class="mt-4">Bank haqida ma'lumot</h4>
+                    <ul>
+                        <li><a href="#">Bank haqida</a></li>
+                        <li><a href="#">Aksiyadorlar va investorlarga</a></li>
+                        <li><a href="#">Matbuot markazi</a></li>
+                        <li><a href="#">Tenderlar</a></li>
+                        <li><a href="#">Karyera</a></li>
+                        <li><a href="#">Bank tarkibi</a></li>
+                        <li><a href="#">Bank Boshqaruvi</a></li>
+                        <li><a href="#">Aksilkorrupsiya</a></li>
+                        <li><a href="#">Korporativ uslub</a></li>
+                        <li><a href="#">Sayt haritasi</a></li>
+                    </ul>
+
+                    <h4 class="mt-4">Normativ-huquqiy hujjatlar</h4>
+                    <ul>
+                        <li><a href="#">Yuqori turuvchi organlar saytlariga havolalar</a></li>
+                        <li><a href="#">Standart shartnomalar</a></li>
+                        <li><a href="#">Normativ-huquqiy hujjatlar loyihalarini</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-info-grid">
+                <div class="app-download-card">
+                    <img src="./qr.code.png" alt="QR Code" class="qr-code">
+                    <div class="app-text">
+                        <h3>Milliy mobil ilovasi</h3>
+                        <p>Ilovani Google Play va App Store orqali yuklab oling</p>
+                        <div class="store-buttons">
+                            <a href="https://play.google.com/store/apps/details?id=com.tune.milliy"><button><i
+                                        class="fa-brands fa-google-play"></i> Google Play</button></a>
+                            <a href="https://apps.apple.com/uz/app/milliy/id1297283006"><button><i
+                                        class="fa-brands fa-apple"></i> App Store</button></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contacts-wrapper">
+                    <div class="contact-item">
+                        <span>Bizni ijtimoiy tarmoqlarda kuzatib boring</span>
+                        <div class="social-icons">
+                            <a href="https://t.me/s/nbu_official"><i class="fa-brands fa-telegram"></i></a>
+                            <a href="https://www.instagram.com/nbu.official/"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2Fuznbu%2F"><i
+                                    class="fa-brands fa-facebook-f"></i></a>
+                            <a href="https://www.youtube.com/channel/UCzk2HMigb00cDveVojzCjrg"><i
+                                    class="fa-brands fa-youtube"></i></a>
+                            <a href="https://x.com/nbu_official"><i class="fa-brands fa-twitter"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <span>Manzil</span>
+                        <p>100084, O'zbekiston Respublikasi,<br>Toshkent sh., Amir Temur shoh ko'chasi,<br>101-uy</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <span>Aloqa markazi</span>
+                        <p class="phone">1344</p>
+                        <p>+998 78 148-00-10</p>
+                        <p class="sub-text">Ish vaqti: 09:00 dan 21:00 gacha<br>Fikr bildiring (murojaat qoldirish)</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <span>Jamoat transporti</span>
+                        <p>"Bodomzor" metro bekati, 19, 24, 51, 67, 91,<br>93, 95, 115, 140-avtobuslar</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <span>Ishonch telefoni</span>
+                        <p>+998 78 147-15-04</p>
+                        <p class="sub-text">Ish kunlari: Dushanbadan Jumagacha<br>Ish vaqti: 09:00 dan 18:00
+                            gacha<br>Tushlik vaqti: 13:00 dan 14:00 gacha<br>Batafsil ma'lumot</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <span>Korporativ murojatlar uchun</span>
+                        <p>info@nbu.uz<br>webmaster@nbu.uz</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <span>Jismoniy shaxslar uchun</span>
+                        <p>support@nbu.uz</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <span>Yuridik shaxslar uchun</span>
+                        <p>support_business@nbu.uz</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./main.js"></script>
+    <script src="./login.js"></script>
+</body>
+
+</html>
