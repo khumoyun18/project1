@@ -174,4 +174,3 @@ offices.forEach(office => {
     officeList.appendChild(item);
 });
 
-console.log("Hello world");
